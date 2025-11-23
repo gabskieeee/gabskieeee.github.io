@@ -130,10 +130,20 @@
 </script>
 
 <!-- Background music -->
-<audio id="bg-music" autoplay loop>
+<audio id="bgMusic" autoplay loop muted>
     <source src="Tyla - Water.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
 </audio>
+
+<script>
+    // Try to unmute and play on page load
+    window.addEventListener('load', () => {
+        const music = document.getElementById('bgMusic');
+        music.muted = false;
+        music.play().catch(() => {
+            console.log("Autoplay blocked, user interaction needed");
+        });
+    });
+</script>
 
 <div class="container">
     <nav>
